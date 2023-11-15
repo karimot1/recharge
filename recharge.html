@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            height:100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        main{
+            width:450px;
+            height:270px;
+            background-image: url(download.jpg);
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+        h1{
+            font-size:20px;
+            font-weight: 600;
+            font-family: 'Courier New', Courier, monospace;
+            color: rgba(0, 0, 0, 0.479);
+        }
+        h2{
+            font-size:20px;
+            font-weight: 600;
+            font-family: 'Courier New', Courier, monospace;
+            color: rgba(0, 0, 0, 0.479);
+        }
+        .genPin{
+            width:130px;
+            height:40px;
+            border:0;
+            border-radius:5px;
+            font-size:20px;
+            font-weight:500;
+            color: rgba(0, 0, 0, 0.479);
+        }
+        .genPin:hover{
+            background-color:rgba(255, 255, 255, 0.363);
+        }
+
+        .LoadAirCar{
+            width:130px;
+            height:40px;
+            border:0;
+            border-radius:5px;
+            font-size:20px;
+            font-weight:500;
+            color: rgba(0, 0, 0, 0.479);
+        }
+        .LoadAirCar:hover{
+            background-color:rgba(255, 255, 255, 0.363);
+        }
+        select{
+            width:70px;
+            height:30px;
+            border:0;
+            border-radius:5px;
+            font-size:15px;
+            font-weight:500;
+        }
+        label{
+            font-size:20px;
+            font-weight: 600;
+            font-family: 'Courier New', Courier, monospace;
+            color: rgba(0, 0, 0, 0.479);
+        }
+        input{
+            width:210px;
+            height:40px;
+            gap:5px;
+            border:0;
+            border-radius:5px;
+            font-size:16px;
+            font-weight:500;
+            color: rgba(0, 0, 0, 0.479);
+        }
+        input:hover{
+            border:1px solid rgba(0, 0, 0, 0.096);
+        }
+        input:focus{
+            outline:rgba(255, 255, 255, 0.219);
+        }
+        .load{
+            margin-left:45px;
+            margin-top:40px;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <div class="load">
+        <h2>Network Provider</h2>
+        <select name="" id="network">
+            <option value="MTN">MTN</option>
+            <option value="MTN">glo</option>
+            <option value="MTN">airtel</option>
+            <option value="MTN">9mobil</option>
+        </select>
+        <label for="">Amount</label>
+        <select name="" id="amount">
+            <option value="100">100</option>
+            <option value="200">200</option>
+            <option value="200">500</option>
+            <option value="200">1000</option>
+        </select>
+
+         <button class="genPin" onclick="genPin()">Generate Pin</button> 
+        <h1 id="displayPin"></h1>
+
+        <h1>Load Airtime</h1>
+        <input type="text" placeholder="*555*pin#" id="LoadCard">
+        <button class="LoadAirCar" onclick="LoadAirCard()">LoadAirtime</button>
+        <h1 id="dev"></h1>
+        </div>
+    </main>
+</body>
+</html>
+<script>
+    let amount = document.getElementById("amount");
+    let network = document.getElementById("network");
+
+
+    function genPin(){
+        let pin = "";
+            for (let i = 0; i < 15; i++) {
+                    pin += Math.floor(Math.random() * 10);
+                }
+        displayPin.innerHTML = pin
+    }
+    let LoadAirtime = document.getElementById("LoadCard");
+
+    function LoadAirCard() {
+        let pin = document.getElementById("displayPin").innerHTML
+        if(!LoadAirtime.value.startsWith("*555") || !LoadAirtime.value.endsWith("#")){
+            alert("Invalid Code")
+        }else{
+            alert(`congrat! your special 100 plan has been activated`)
+        }
+    }
+</script>
